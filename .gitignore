@@ -4,3 +4,4 @@ env/
 *.pyo
 *.pyd
 __pycache__/
+env

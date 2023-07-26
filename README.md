@@ -68,36 +68,15 @@ This API provides a RESTful interface to a database of prompts. The API provides
 
 ### GET /prompts
 
-This endpoint returns a list of prompts in the database. You can filter the list of prompts by passing query parameters to the endpoint. The following query parameters are supported:
 
-* `category`: filter the list of prompts by category
-* `prompt`: filter the list of prompts by prompt
-* `max_length`: filter the list of prompts by maximum length
-* `min_length`: filter the list of prompts by minimum length
-* `limit`: limit the number of prompts returned
-* `offset`: offset the returned prompts by the specified amount
-
-### GET /prompts/{id}
-
-This endpoint returns a single prompt by its ID.
 
 ### POST /prompts
 
-This endpoint adds a prompt to the database. It accepts a JSON object as its request body. The JSON object should contain the following keys:
-
-* `category`: the category of the prompt
-* `prompt`: the prompt text
-* `max_length`: the maximum length of the prompt
-* `min_length`: the minimum length of the prompt
 
 ### PUT /prompts/{id}
 
-This endpoint updates a prompt in the database. It accepts a JSON object as its request body. The JSON object should contain the following keys:
+This endpoint updates a prompt in the database. It accepts a JSON object as its request body.
 
-* `category`: the category of the prompt
-* `prompt`: the prompt text
-* `max_length`: the maximum length of the prompt
-* `min_length`: the minimum length of the prompt
 
 ### DELETE /prompts/{id}
 
@@ -113,63 +92,3 @@ python -m unittest discover
 # below are commande ideas
 ### Curl Commands
 You can use the following curl commands to test the API:
-
-```bash
-# Get all prompts
-curl -i http://localhost:5000/prompts
-
-# Get prompts filtered by category
-curl -i http://localhost:5000/prompts?category=science
-
-# Get prompts filtered by prompt text
-curl -i http://localhost:5000/prompts?prompt=What
-
-# Get prompts filtered by maximum length
-curl -i http://localhost:5000/prompts?max_length=100
-
-# Get prompts filtered by minimum length
-curl -i http://localhost:5000/prompts?min_length=10
-
-# Get prompts filtered by category and prompt text
-curl -i http://localhost:5000/prompts?category=science&prompt=What
-
-# Get prompts filtered by category and maximum length
-curl -i http://localhost:5000/prompts?category=science&max_length=100
-
-Here are some example curl commands that you can use to test the API:
-
-#### GET /prompts
-
-```bash
-curl -X GET http://localhost:5000/prompts
-```
-
-#### GET /prompts/{id}
-
-```bash
-curl -X GET http://localhost:5000/prompts/1
-```
-
-#### POST /prompts
-
-```bash
-curl -X POST \
-    -H "Content-Type: application/json" \
-    -d '{"category":"test","prompt":"This is a test prompt.","max_length":50,"min_length":10}' \
-    http://localhost:5000/prompts
-```
-
-#### PUT /prompts/{id}
-
-```bash
-curl -X PUT \
-    -H "Content-Type: application/json" \
-    -d '{"category":"test","prompt":"This is a test prompt.","max_length":50,"min_length":10}' \
-    http://localhost:5000/prompts/1
-```
-
-#### DELETE /prompts/{id}
-
-```bash
-curl -X DELETE http://localhost:5000/prompts/1
-```
