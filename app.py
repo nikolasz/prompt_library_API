@@ -1,11 +1,12 @@
 from flask import Flask, request
 from flask_restful import Resource, Api
-from models.models import setup_db, Prompt, Category, Subcategory, Keyword, PromptKeyword, Usage, Source
-
+from models.models import setup_db, db, Prompt, Category, Subcategory, Keyword, PromptKeyword, Usage, Source
 def create_app():
     app = Flask(__name__)
     api = Api(app)
     setup_db(app)
+    with app.app_context():
+        db.create_all()
 
     class PromptResource(Resource):
         def get(self, id=None):
